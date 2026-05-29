@@ -22,9 +22,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        checkPermissions()
         setupUI()
-        startServices()
+        if (checkPermissions()) {
+            startServices()
+        }
     }
 
     private fun setupUI() {
@@ -58,20 +59,35 @@ class MainActivity : AppCompatActivity() {
         seismograph.start()
     }
 
-    private fun checkPermissions() {
-        val permissions = arrayOf(
+    private fun checkPermissions(): Boolean {
+        val permissions = mutableListOf(
             Manifest.permission.ACCESS_FINE_LOCATION,
-            Manifest.permission.RECORD_AUDIO,
-            Manifest.permission.CHANGE_WIFI_STATE,
-            Manifest.permission.ACCESS_WIFI_STATE
+            Manifest.permission.RECORD_AUDIO
         )
         
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+            permissions.add(Manifest.permission.POST_NOTIFICATIONS)
+            permissions.add(Manifest.permission.NEARBY_WIFI_DEVICES)
+        }
+
         val missing = permissions.filter { 
             ContextCompat.checkSelfPermission(this, it) != PackageManager.PERMISSION_GRANTED 
         }
 
-        if (missing.isNotEmpty()) {
+        return if (missing.isNotEmpty()) {
             ActivityCompat.requestPermissions(this, missing.toTypedArray(), 100)
+            false
+        } else {
+            true
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == 100 && grantResults.all { it == PackageManager.PERMISSION_GRANTED }) {
+            startServices()
+        } else {
+            Toast.makeText(this, "Uygulamanın çalışması için izinler gerekli", Toast.LENGTH_LONG).show()
         }
     }
 }
