@@ -1,0 +1,42 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="500"
+    android:viewportHeight="500">
+
+    <!-- Arka Plan (Opsiyonel, layout'tan da verilebilir) -->
+    <path
+        android:fillColor="#0D0F12"
+        android:pathData="M40,0 L460,0 A40,40 0 0 1 500,40 L500,460 A40,40 0 0 1 460,500 L40,500 A40,40 0 0 1 0,460 L0,40 A40,40 0 0 1 40,0 Z" />
+
+    <!-- Sismik Hayat Köprüsü Çizgisi -->
+    <path
+        android:pathData="M 60,260 L 160,260 L 190,230 L 220,290 L 250,130 L 280,310 L 310,250 L 340,260 L 440,260"
+        android:strokeWidth="14"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round">
+        <aapt:attr name="android:strokeColor">
+            <gradient
+                android:startX="60"
+                android:startY="260"
+                android:endX="440"
+                android:endY="260"
+                android:type="linear">
+                <item android:offset="0" android:color="#00E676" />
+                <item android:offset="0.35" android:color="#00E676" />
+                <item android:offset="0.5" android:color="#FF1E27" />
+                <item android:offset="0.65" android:color="#00E676" />
+                <item android:offset="1" android:color="#00E676" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Mesh Düğümleri -->
+    <path android:fillColor="#FF1E27" android:pathData="M250,130m-9,0a9,9 0 1,1 18,0a9,9 0 1,1 -18,0" /> <!-- Tepe SOS -->
+    <path android:fillColor="#00E676" android:pathData="M220,290m-7,0a7,7 0 1,1 14,0a7,7 0 1,1 -14,0" /> <!-- Sol Dip -->
+    <path android:fillColor="#00E676" android:pathData="M280,310m-7,0a7,7 0 1,1 14,0a7,7 0 1,1 -14,0" /> <!-- Sağ Dip -->
+    <path android:fillColor="#FFFFFF" android:pathData="M160,260m-6,0a6,6 0 1,1 12,0a6,6 0 1,1 -12,0" /> <!-- Giriş -->
+    <path android:fillColor="#FFFFFF" android:pathData="M340,260m-6,0a6,6 0 1,1 12,0a6,6 0 1,1 -12,0" /> <!-- Çıkış -->
+
+</vector>

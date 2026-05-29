@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hayat Köprüsü</string>
+    <string name="help_request">YARDIM İSTE</string>
+    <string name="i_am_safe">GÜVENDEDEYİM</string>
+    <string name="injured">Yaralı Var</string>
+    <string name="under_rubble">Enkaz Altındayım</string>
+    <string name="medical_needed">Tıbbi Malzeme Lazım</string>
+    <string name="baby_child">Bebek/Çocuk Var</string>
+    <string name="bit_counter">Bandwidth: %d bits</string>
+    <string name="mesh_status_local">Mesh Ağına İletildi</string>
+    <string name="mesh_status_peers">Yakındaki %d Kişiye Ulaştı</string>
+    <string name="engineering_mode">MÜHENDİSLİK PANELİ</string>
+</resources>
